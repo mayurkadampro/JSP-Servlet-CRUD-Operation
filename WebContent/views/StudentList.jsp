@@ -15,11 +15,20 @@
 </head>
 <body>
 	<div class="container">
-		<h1>Student Details...</h1>
+		<h1 class="text-center mt-4">Student Details...</h1>
 		<hr>
-		<p>
-			<button class = "btn btn-primary">Add Employee</button>
-		</p>
+		<p class="text-center">${NOTIFICATION}</p>
+		<hr>
+		<div class="container">
+			<div class="row">
+				<span class="col-lg-6 col-md-6 col-sm-4">
+					<button onclick="location.href = 'views/Studentform.jsp';" class = "btn btn-primary">Add More Student</button>
+				</span>  
+				<span class="col-lg-6 col-md-6 col-sm-4">
+					<button class = "btn btn-primary">Delete All Student Detail</button>
+				</span>
+			</div>
+		</div>
 		<hr>
 		<table class = "table table-striped table-bordered">
 			<tr class = "thead-dark">
@@ -28,6 +37,7 @@
 				<th>Name</th>
 				<th>city</th>
 				<th>CreatedOn</th>
+				<th>Edit</th>
 			</tr>
 			<c:forEach items="${list}" var="student">
 			
@@ -37,6 +47,11 @@
 					<td>${student.name}</td>
 					<td>${student.city}</td>
 					<td>${student.date}</td>
+					<td> 
+						<a href = "${pageContext.request.contextPath}/StudentController?action=EDIT&id=${student.id}">Edit</a> 
+						| 
+						<a href = "${pageContext.request.contextPath}/StudentController?action=DELETE&id=${student.id}">Delete</a> 
+					</td>
 				</tr>
 			</c:forEach>
 			
