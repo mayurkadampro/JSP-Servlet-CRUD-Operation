@@ -20,9 +20,9 @@
 		<p class="text-center">${NOTIFICATION}</p>
 		<hr>
 		<div class="container">
-			<div class="row">
+			<div class="row text-center">
 				<span class="col-lg-6 col-md-6 col-sm-4">
-					<button onclick="location.href = 'views/Studentform.jsp';" class = "btn btn-primary">Add More Student</button>
+					<button onclick="location.href = 'views/Studentform.jsp'" class = "btn btn-primary">Add More Student</button>
 				</span>  
 				<span class="col-lg-6 col-md-6 col-sm-4">
 					<button class = "btn btn-primary">Delete All Student Detail</button>

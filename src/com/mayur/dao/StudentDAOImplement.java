@@ -77,8 +77,8 @@ public class StudentDAOImplement implements StudentDAO {
 		boolean flag = false;
 		
 		try{
-			String sql = "INSERT INTO tbl_Student(id,rno,name,city)VALUES"
-					+ "('"+student.getId()+"','"+student.getRno()+"','"+student.getName()+"', '"+student.getCity()+"')";
+			String sql = "INSERT INTO Student(rno,name,city,createdOn)VALUES"
+					+ "('"+student.getRno()+"', '"+student.getName()+"', '"+student.getCity()+"', '"+student.getDate()+"')";
 			con = DbConnectionUtil.openConnection();
 			preparedStatement = (PreparedStatement) con.prepareStatement(sql);
 			preparedStatement.executeUpdate();

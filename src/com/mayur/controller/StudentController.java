@@ -1,6 +1,8 @@
 package com.mayur.controller;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -81,14 +83,16 @@ public class StudentController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDateTime now = LocalDateTime.now();
 		String id = request.getParameter("id");
 		
 		Student student = new Student();
-		student.setId(Integer.parseInt(request.getParameter("id")));
+		//student.setId(Integer.parseInt(request.getParameter("id")));
 		student.setRno(Integer.parseInt(request.getParameter("rno")));
 		student.setName(request.getParameter("name"));
 		student.setCity(request.getParameter("city"));
-		student.setDate(request.getParameter("createdOn"));
+		student.setDate(dtf.format(now));
 		
 		if(id.isEmpty() || id == null) {
 			
