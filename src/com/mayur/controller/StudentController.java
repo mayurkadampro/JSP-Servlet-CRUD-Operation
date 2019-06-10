@@ -40,13 +40,15 @@ public class StudentController extends HttpServlet {
 			break;
 			
 		case "EDIT":
-			getSingleEmployee(request, response);
+			getSingleStudent(request, response);
 			break;
 			
 		case "DELETE":
-			deleteEmployee(request, response);
+			deleteStudent(request, response);
 			break;
-			
+		case "DELETEALL":
+			deleteAllStudent(request, response);
+			break;
 		default:
 			listStudent(request, response);
 			break;
@@ -63,16 +65,24 @@ public class StudentController extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 	
-	private void deleteEmployee(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void deleteStudent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String id = request.getParameter("id");
 		if(studentDAO.delete(Integer.parseInt(id))) {
-			request.setAttribute("NOTIFICATION", "Student Deleted Successfully!");
+			request.setAttribute("NOTIFICATION", "Student Record Deleted Successfully!");
+		}
+		listStudent(request, response);
+	}
+	
+	private void deleteAllStudent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		if(studentDAO.deleteAll()){
+			request.setAttribute("NOTIFICATION", "All Student Record Deleted Successfully!");
 		}
 		listStudent(request, response);
 	}
 
-	private void getSingleEmployee(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+	private void getSingleStudent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		String id = request.getParameter("id");
 		Student Student = studentDAO.get(Integer.parseInt(id));
@@ -97,14 +107,14 @@ public class StudentController extends HttpServlet {
 		if(id.isEmpty() || id == null) {
 			
 			if(studentDAO.save(student)) {
-				request.setAttribute("NOTIFICATION", "Student Saved Successfully!");
+				request.setAttribute("NOTIFICATION", "Student Record Saved Successfully!");
 			}
 		
 		}else {
 			
 			student.setId(Integer.parseInt(id));
 			if(studentDAO.update(student)) {
-				request.setAttribute("NOTIFICATION", "Student Updated Successfully!");
+				request.setAttribute("NOTIFICATION", "Student Record Updated Successfully!");
 			}
 			
 		}

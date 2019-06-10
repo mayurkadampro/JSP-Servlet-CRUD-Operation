@@ -118,4 +118,19 @@ public class StudentDAOImplement implements StudentDAO {
 		return flag;
 	}
 
+	@Override
+	public boolean deleteAll() {
+		boolean flag = false;
+		try {
+			String sql = "DELETE FROM Student";
+			con = DbConnectionUtil.openConnection();
+			stm = con.createStatement();
+			stm.execute(sql);
+			flag = true;
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return flag;
+	}
+
 }

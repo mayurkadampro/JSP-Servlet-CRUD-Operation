@@ -15,4 +15,6 @@ public interface StudentDAO {
 	boolean delete(int id);
 	
 	boolean update(Student student);
+	
+	boolean deleteAll();
 }

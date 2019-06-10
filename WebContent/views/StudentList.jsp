@@ -25,7 +25,7 @@
 					<button onclick="location.href = 'views/Studentform.jsp'" class = "btn btn-primary">Add More Student</button>
 				</span>  
 				<span class="col-lg-6 col-md-6 col-sm-4">
-					<button class = "btn btn-primary">Delete All Student Detail</button>
+					<button onclick="location.href = '${pageContext.request.contextPath}/StudentController?action=DELETEALL'" class = "btn btn-primary">Delete All Student Detail</button>
 				</span>
 			</div>
 		</div>
